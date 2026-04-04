@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-cream-50: #FAF8F4;
+  --color-cream-100: #F5F0E8;
+  --color-cream-200: #EDE8DF;
+  --color-cream-300: #E5DFD4;
+  --color-cream-400: #DDD6C8;
+  --color-cream-500: #C8BDAB;
+  --color-cream-600: #A89A85;
+  --color-cream-700: #8A7D6A;
+  --color-cream-800: #6B604F;
+  --color-cream-900: #4D4438;
+
+  --color-terracotta-400: #D4784A;
+  --color-terracotta-500: #C4673A;
+  --color-terracotta-600: #A8572F;
+  --color-terracotta-700: #8C4826;
+
+  --color-ink-50: #F5F0E8;
+  --color-ink-100: #E5DFD4;
+  --color-ink-200: #C8BDAB;
+  --color-ink-300: #A89A85;
+  --color-ink-400: #8A7D6A;
+  --color-ink-500: #6B604F;
+  --color-ink-600: #4D4438;
+  --color-ink-700: #332D24;
+  --color-ink-800: #241F19;
+  --color-ink-900: #1A1612;
+
+  /* Dark UI: Claude-style warm dark palette */
+  --color-dark-bg: #262624;
+  --color-dark-surface: #2f2f2d;
+  --color-dark-surface2: #393937;
+  --color-dark-surface3: #484846;
+  --color-dark-border: #3d3d3b;
+
+  --color-sidebar-panel: #262624;
+  --color-sidebar-row-active: #393937;
+  --color-sidebar-row-hover: rgba(255, 255, 255, 0.06);
+  --color-sidebar-muted: #a3a3a3;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-chat-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-dyslexic: "OpenDyslexic", "Comic Sans MS", sans-serif;
+}
+
+html {
+  font-family: var(--font-body);
+}
+
+body {
+  background-color: #fafafa;
+  color: #171717;
+  line-height: 1.65;
+}
+
+.dark body {
+  background-color: var(--color-dark-bg);
+  color: #e8e6e3;
+}
+
+/*
+ * In dark mode, remap “cream” scale to cool neutrals so existing
+ * dark:text-cream-* / dark:bg-cream-* utilities match the sidebar palette.
+ * cream-100/200 stay light for inverted controls (send button, tooltips).
+ */
+.dark {
+  --color-cream-50: #1f1f1d;
+  --color-cream-100: #f5f3f0;
+  --color-cream-200: #e8e6e3;
+  --color-cream-300: #d4d2cf;
+  --color-cream-400: #a8a6a3;
+  --color-cream-500: #8c8a87;
+  --color-cream-600: #737170;
+  --color-cream-700: #52514f;
+  --color-cream-800: #403f3d;
+  --color-cream-900: #2f2f2d;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.font-chat-sans {
+  font-family: var(--font-chat-sans);
+}
+
+.font-chat-system {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+.font-dyslexic {
+  font-family: var(--font-dyslexic);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-cream-400);
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-dark-surface3);
+}
+
+/* Auto-expanding textarea */
+.auto-resize {
+  field-sizing: content;
+  min-height: 44px;
+  max-height: 200px;
+}
+
+/* Markdown content styles */
+.prose-klawd h1 { font-size: 1.5rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+.prose-klawd h2 { font-size: 1.25rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+.prose-klawd h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem; }
+.prose-klawd p { margin-bottom: 0.75rem; }
+.prose-klawd ul, .prose-klawd ol { margin-bottom: 0.75rem; padding-left: 1.5rem; }
+.prose-klawd ul { list-style-type: disc; }
+.prose-klawd ol { list-style-type: decimal; }
+.prose-klawd li { margin-bottom: 0.25rem; }
+.prose-klawd a { color: var(--color-terracotta-500); text-decoration: underline; }
+.prose-klawd blockquote {
+  border-left: 3px solid var(--color-cream-400);
+  padding-left: 1rem;
+  color: var(--color-ink-500);
+  margin-bottom: 0.75rem;
+}
+.prose-klawd table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.75rem;
+}
+.prose-klawd th, .prose-klawd td {
+  border: 1px solid var(--color-cream-300);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.dark .prose-klawd th, .dark .prose-klawd td {
+  border-color: var(--color-dark-border);
+}
+
+.dark .prose-klawd blockquote {
+  color: var(--color-cream-500);
+  border-left-color: var(--color-dark-surface3);
+}
+.prose-klawd th {
+  background: var(--color-cream-200);
+  font-weight: 600;
+}
+.dark .prose-klawd th {
+  background: var(--color-dark-surface2);
+}
+.prose-klawd code:not(pre code) {
+  background: var(--color-cream-200);
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+.dark .prose-klawd code:not(pre code) {
+  background: var(--color-dark-surface2);
+}
+.prose-klawd pre {
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.prose-klawd strong { font-weight: 600; }
+.prose-klawd em { font-style: italic; }
+.prose-klawd hr { border-color: var(--color-cream-300); margin: 1.5rem 0; }
+.dark .prose-klawd hr { border-color: var(--color-dark-border); }
+
+/* Streaming cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.streaming-cursor::after {
+  content: "▋";
+  animation: blink 1s step-end infinite;
+  color: var(--color-terracotta-500);
+}
+
+/* Thinking block animation */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.thinking-pulse {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
